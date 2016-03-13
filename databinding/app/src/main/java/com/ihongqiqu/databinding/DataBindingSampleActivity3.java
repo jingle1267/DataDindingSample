@@ -10,7 +10,9 @@ import com.ihongqiqu.databinding.databinding.ActivityDataBindingSample3Binding;
 import com.ihongqiqu.databinding.event.MyHandlers;
 import com.ihongqiqu.databinding.event.PigHandler;
 
-
+/**
+ * 实时更新
+ */
 public class DataBindingSampleActivity3 extends AppCompatActivity {
 
     public Pig pig;
@@ -23,14 +25,11 @@ public class DataBindingSampleActivity3 extends AppCompatActivity {
         pig = new Pig();
         pig.setLabel("ChangBaiShan");
         pig.setWeight("200Kg");
-
         PigHandler pigHandler = new PigHandler(this);
-
 
         ActivityDataBindingSample3Binding binding = DataBindingUtil.setContentView(this,
                 R.layout.activity_data_binding_sample3);
         binding.setPig(pig);
-
         binding.setPigHandler(pigHandler);
     }
 

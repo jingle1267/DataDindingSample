@@ -9,7 +9,9 @@ import com.ihongqiqu.databinding.BR;
 import com.ihongqiqu.databinding.databinding.ActivityDataBindingSample1Binding;
 import com.ihongqiqu.databinding.event.MyHandlers;
 
-
+/**
+ * 数据绑定
+ */
 public class DataBindingSampleActivity1 extends AppCompatActivity {
 
     @Override

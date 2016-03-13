@@ -8,7 +8,9 @@ import com.ihongqiqu.databinding.databinding.ActivityDataBindingSample1Binding;
 import com.ihongqiqu.databinding.databinding.ActivityDataBindingSample2Binding;
 import com.ihongqiqu.databinding.event.MyHandlers;
 
-
+/**
+ * 事件绑定
+ */
 public class DataBindingSampleActivity2 extends AppCompatActivity {
 
     @Override

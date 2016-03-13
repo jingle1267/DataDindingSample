@@ -203,3 +203,68 @@ protected void onCreate(Bundle savedInstanceState) {
 ```
 
 👌OK，通过上述三个步骤就实现了事件的绑定！
+
+## Android使用DataBinding更新数据
+
+  实现数据实时更新，需要在在之前的基础上，额外实现一部分操作。
+  
+  POJO需要做一下修改，修改后如下，重点是<code>@Bindable</code>和<code>notifyPropertyChanged(BR.XXX);</code>，其中<code>BR.XXX</code>为对应需要更新的ID。具体代码如下：
+  
+```java
+/**
+ * 猪，有标签和重量两个属性
+ * <p/>
+ * Created by zhenguo on 3/13/16.
+ */
+public class Pig extends BaseObservable {
+
+    private String label;
+    private String weight;
+
+    @Bindable
+    public String getLabel() {
+        return label;
+    }
+
+    public void setLabel(String label) {
+        this.label = label;
+        notifyPropertyChanged(BR.label);
+    }
+
+    @Bindable
+    public String getWeight() {
+        return weight;
+    }
+
+    public void setWeight(String weight) {
+        this.weight = weight;
+        notifyPropertyChanged(BR.weight);
+    }
+}
+```
+
+  事件处理类需要调整如下(仅供参考)，代码中直接修改了实体的属性就实现了对UI的更新：
+  
+```java
+/**
+ * 事件处理
+ * <p/>
+ * Created by zhenguo on 3/13/16.
+ */
+public class PigHandler {
+
+    DataBindingSampleActivity3 sampleActivity3;
+
+    public PigHandler(DataBindingSampleActivity3 sampleActivity3) {
+        this.sampleActivity3 = sampleActivity3;
+    }
+
+    public void onClick(View view) {
+        if (sampleActivity3 != null && sampleActivity3.pig != null) {
+            sampleActivity3.pig.setLabel("长白山");
+            sampleActivity3.pig.setWeight("280Kg");
+        }
+    }
+
+}
+```
