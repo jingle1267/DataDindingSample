@@ -1,7 +1,8 @@
 # Android Data Dinding Sample
-Android Data Binding Sample.
 
-## Android实现DataBinding步骤：
+  Data Binding 解决了 Android UI 编程中的一个痛点，官方原生支持 MVVM 模型可以让我们在不改变既有代码框架的前提下，非常容易地使用这些新特性。Google 2015 IO大会中对于Android开发曾了Data Binding。
+
+## Android实现数据DataBinding步骤
 
 ### 一. 配置全局
 
@@ -99,6 +100,8 @@ ActivityDataBindingSample1Binding binding = DataBindingUtil.setContentView(this,
 binding.setUser(user);
 ```
 
+⚠️ 注意: 上面代码是<code>ActivityDataBindingSample1Binding</code>, 而不是我们的Activity： <code>DataBindingSample1BindingActivity</code>
+
 第二种方式：
 
 ```java
@@ -111,3 +114,92 @@ binding1.setVariable(BR.user, user);
 ```
 
   实现上述步骤之后，编译运行，就可以看到用户名和年龄显示到对应的控件。
+  
+## Android实现事件DataBinding步骤
+
+
+### 一.实现事件处理类
+
+编写事件处理类，代码如下：
+
+```java
+public class MyHandlers {
+
+    public final void onClickName(View view) {
+        Toast.makeText(view.getContext(), "onClickName()", Toast.LENGTH_SHORT).show();
+    }
+
+    public final void onClickAge(View view) {
+        Toast.makeText(view.getContext(), "onClickAge()", Toast.LENGTH_SHORT).show();
+    }
+
+}
+```
+
+### 二.控件选择处理方法
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable name="myHandlers" type="com.ihongqiqu.databinding.event.MyHandlers"/>
+        <variable name="user" type="com.ihongqiqu.databinding.data.User" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@{user.name}"
+            android:onClick="@{myHandlers.onClickName}"
+            android:clickable="true"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="27dp"
+            android:text="@{user.age}"
+            android:onClick="@{myHandlers.onClickAge}"
+            android:clickable="true"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    </LinearLayout>
+</layout>
+```
+
+### 三.实现控件和事件的绑定
+
+Activityd的onCreate()方法添加绑定代码：
+
+**这一步很重要，不实现这一步会导致事件无法出发。**
+
+```java
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setTitle("事件绑定");
+    
+    User user = new User("jingle1267", "20");
+    MyHandlers myHandlers = new MyHandlers();
+
+    ActivityDataBindingSample2Binding binding = DataBindingUtil.setContentView(this,
+        R.layout.activity_data_binding_sample2);
+    binding.setUser(user);
+    binding.setMyHandlers(myHandlers);
+}
+```
+
+👌OK，通过上述三个步骤就实现了事件的绑定！

@@ -2,6 +2,7 @@
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android">
     <data>
+        <variable name="myHandlers" type="com.ihongqiqu.databinding.event.MyHandlers"/>
         <variable name="user" type="com.ihongqiqu.databinding.data.User" />
     </data>
 
@@ -20,6 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="@{user.name}"
+            android:onClick="@{myHandlers.onClickName}"
             android:clickable="true"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -29,6 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="27dp"
             android:text="@{user.age}"
+            android:onClick="@{myHandlers.onClickAge}"
             android:clickable="true"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 

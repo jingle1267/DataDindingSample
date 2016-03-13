@@ -21,7 +21,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="New Button"
+        android:text="数据绑定"
         android:id="@+id/button2"
         android:onClick="onClick"
         android:layout_gravity="center_horizontal" />
@@ -29,7 +29,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="New Button"
+        android:text="事件绑定"
         android:id="@+id/button3"
         android:onClick="onClick"
         android:layout_gravity="center_horizontal" />
@@ -37,7 +37,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="New Button"
+        android:text="实时更新"
         android:id="@+id/button4"
         android:onClick="onClick"
         android:layout_gravity="center_horizontal" />
