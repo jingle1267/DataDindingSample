@@ -11,7 +11,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        setTitle("Android Data Binding Samples");
+        setTitle("Data Binding Samples");
     }
 
     public void onClick(View view) {
@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
                 startDataBindingSampleActivity2();
                 break;
             case R.id.button4:
-
+                startDataBindingSampleActivity3();
                 break;
         }
     }
@@ -41,6 +41,14 @@ public class MainActivity extends AppCompatActivity {
      */
     private void startDataBindingSampleActivity2() {
         Intent intent = new Intent(this, DataBindingSampleActivity2.class);
+        startActivity(intent);
+    }
+
+    /**
+     * 实时更新
+     */
+    private void startDataBindingSampleActivity3() {
+        Intent intent = new Intent(this, DataBindingSampleActivity3.class);
         startActivity(intent);
     }
 
