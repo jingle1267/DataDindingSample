@@ -1,4 +1,5 @@
 # Android DataDinding Sample
+![travis-ci](https://api.travis-ci.org/jingle1267/DataDindingSample.svg?branch=master)
 
   DataBinding解决了Android UI编程中的一个痛点，官方原生支持MVVM模型可以让我们在不改变既有代码框架的前提下，非常容易地使用这些新特性。Google 2015 IO大会中对于Android开发曾了Data Binding。[DataBinding文章地址](http://ihongqiqu.com/categories/Android-DataBinding/)
 
