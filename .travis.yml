@@ -8,11 +8,13 @@ android:
    - extra-android-support
 script:
    - ./gradlew assembleRelease
+before_deploy:
+   - mv app/build/outputs/apk/app-release.apk app/build/outputs/apk/DataBindingSample.apk
 deploy:
   provider: releases
   api_key:
     secure: $GITHUB_ACCESS_TOKEN
-  file: app/build/outputs/apk/app-release.apk
+  file: app/build/outputs/apk/DataBindingSample.apk
   skip_cleanup: true
   on:
     tags: true
