@@ -7,7 +7,10 @@ android:
    - extra-android-m2repository
    - extra-android-support
 script:
-   skip_cleanup: true
    - ./gradlew assembleRelease
+before_install:
    - gem install fir-cli
+deploy:
+  skip_cleanup: true
+after_deploy:
   - fir p app/build/outputs/apk/app-release.apk -T 0b9a1c25f61439882dcb93f0f16c2f0b -c "'git log -n 1'"
