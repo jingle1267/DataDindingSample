@@ -10,8 +10,8 @@ script:
   - ./gradlew assembleRelease
 deploy:
   provider: releases
-  user: System.getenv("GITHUB_USERNAME")
-  password: System.getenv("GITHUB_PASSWORD")
+  api_key:
+      secure: 52372b56db1bba3dddb9175bfe27c88422891fda
   file: app/build/outputs/apk/app-release.apk
   skip_cleanup: true
   on:
