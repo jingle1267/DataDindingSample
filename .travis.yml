@@ -7,4 +7,12 @@ android:
    - extra-android-m2repository
    - extra-android-support
 script:
-  - ./gradlew assembleDebug
+  - ./gradlew assembleRelease
+deploy:
+  provider: releases
+  user: System.getenv("GITHUB_USERNAME")
+  password: System.getenv("GITHUB_PASSWORD")
+  file: app/build/outputs/apk/app-release.apk
+  skip_cleanup: true
+  on:
+    tags: true
