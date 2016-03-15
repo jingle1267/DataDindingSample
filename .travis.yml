@@ -10,8 +10,7 @@ script:
   - ./gradlew assembleRelease
 deploy:
   provider: releases
-  api_key:
-      secure: 52372b56db1bba3dddb9175bfe27c88422891fda
+  api_key: 52372b56db1bba3dddb9175bfe27c88422891fda
   file: app/build/outputs/apk/app-release.apk
   skip_cleanup: true
   on:
