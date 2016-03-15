@@ -7,11 +7,15 @@ android:
    - extra-android-m2repository
    - extra-android-support
 script:
-  - ./gradlew assembleRelease
+   - ./gradlew assembleRelease
 deploy:
   provider: releases
-  api_key: 52372b56db1bba3dddb9175bfe27c88422891fda
+  api_key: $GITHUB_API_KEY
   file: app/build/outputs/apk/app-release.apk
   skip_cleanup: true
   on:
     tags: true
+before_install:
+   - gem install fir-cli
+after_deploy:
+   - fir p app/build/outputs/apk/app-release.apk -T $FIR_TOKEN -c "`git cat-file tag $TRAVIS_TAG`"
