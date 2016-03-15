@@ -7,9 +7,9 @@ android:
    - extra-android-m2repository
    - extra-android-support
 script:
-   - ./gradlew assembleRelease
+   - ./gradlew assembleDebug
 before_deploy:
-   - mv app/build/outputs/apk/app-release.apk app/build/outputs/apk/DataBindingSample.apk
+   - mv app/build/outputs/apk/app-debug.apk app/build/outputs/apk/DataBindingSample.apk
 deploy:
   provider: releases
   api_key:
