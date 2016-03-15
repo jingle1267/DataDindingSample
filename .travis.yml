@@ -6,6 +6,8 @@ android:
    - android-23
    - extra-android-m2repository
    - extra-android-support
+deploy:
+  skip_cleanup: true
 script:
    - ./gradlew assembleRelease
    - gem install fir-cli
