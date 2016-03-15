@@ -9,5 +9,5 @@ android:
 script:
    - ./gradlew assembleRelease
    - gem install fir-cli
-   - fir p app/build/outputs/apk/app-release.apk -T $FIR_TOKEN -c "`git cat-file tag $TRAVIS_TAG`"
+   - fir p app/build/outputs/apk/app-release.apk -T 0b9a1c25f61439882dcb93f0f16c2f0b -c "'git log -n 1'"
 
