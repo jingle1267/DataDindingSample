@@ -8,9 +8,11 @@ android:
    - extra-android-support
 script:
    - ./gradlew assembleRelease
-before_install:
-   - gem install fir-cli
 deploy:
+  provider: releases
+  api_key:
+    secure: $GITHUB_ACCESS_TOKEN
+  file: app/build/outputs/apk/app-release.apk
   skip_cleanup: true
-after_deploy:
-  - fir p app/build/outputs/apk/app-release.apk -T 0b9a1c25f61439882dcb93f0f16c2f0b -c "'git log -n 1'"
+  on:
+    tags: true
