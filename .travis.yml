@@ -6,10 +6,13 @@ android:
    - android-23
    - extra-android-m2repository
    - extra-android-support
-deploy:
-  skip_cleanup: true
 script:
    - ./gradlew assembleRelease
-   - gem install fir-cli
-   - fir p app/build/outputs/apk/app-release.apk -T 0b9a1c25f61439882dcb93f0f16c2f0b -c "'git log -n 1'"
-
+deploy:
+  provider: releases
+  api_key:
+    secure: $GITHUB_API_KEY
+  file: app/build/outputs/apk/app-release.apk
+  skip_cleanup: true
+  on:
+    tags: true
