@@ -8,14 +8,6 @@ android:
    - extra-android-support
 script:
    - ./gradlew assembleRelease
-deploy:
-  provider: releases
-  api_key: $GITHUB_API_KEY
-  file: app/build/outputs/apk/app-release.apk
-  skip_cleanup: true
-  on:
-    tags: true
-before_install:
    - gem install fir-cli
-after_deploy:
    - fir p app/build/outputs/apk/app-release.apk -T $FIR_TOKEN -c "`git cat-file tag $TRAVIS_TAG`"
+
