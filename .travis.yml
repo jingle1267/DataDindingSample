@@ -20,4 +20,4 @@ deploy:
     tags: true
 after_deploy:
   - gem install fir-cli
-  - fir p app/build/outputs/apk/app-release.apk -T 0b9a1c25f61439882dcb93f0f16c2f0b -c "'git log -n 1'"
+  - fir p app/build/outputs/apk/DataBindingSample.apk -T 0b9a1c25f61439882dcb93f0f16c2f0b -c "'git log -n 1'"
